@@ -130,38 +130,55 @@
     .hamburger {
       display: none;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 5px;
       cursor: pointer;
-      padding: .5rem;
-      background: none;
-      border: none;
+      padding: .6rem .7rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: var(--radius-sm);
+      z-index: 1001;
+      position: relative;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      min-width: 44px;
+      min-height: 44px;
     }
 
     .hamburger span {
       display: block;
-      width: 24px;
+      width: 22px;
       height: 2px;
       background: white;
       border-radius: 2px;
       transition: var(--transition);
+      pointer-events: none;
     }
 
     .mobile-menu {
       display: none;
       background: var(--blue-deep);
-      padding: 1rem 2rem 1.5rem;
+      padding: .5rem 1.5rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.08);
     }
 
     .mobile-menu.open { display: block; }
 
     .mobile-menu a {
-      display: block;
-      padding: .75rem 0;
-      color: rgba(255,255,255,.8);
+      display: flex;
+      align-items: center;
+      padding: .9rem 0;
+      color: rgba(255,255,255,.85);
       text-decoration: none;
       font-weight: 500;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      -webkit-tap-highlight-color: transparent;
     }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:active { color: var(--accent); }
 
     /* ──────────────── HERO ──────────────── */
     #inicio {
@@ -1590,17 +1607,49 @@
   <span class="wa-tooltip">¡Escríbeme ahora!</span>
 </a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Hamburger menu
+<script>
+  // ── Hamburger menu ──
   const ham = document.getElementById('hamburger');
   const mob = document.getElementById('mobileMenu');
-  ham.addEventListener('click', () => mob.classList.toggle('open'));
-  function closeMenu() { mob.classList.remove('open'); }
 
-  // Smooth active nav
+  ham.addEventListener('click', function(e) {
+    e.stopPropagation();
+    mob.classList.toggle('open');
+  });
+
+  function closeMenu() {
+    mob.classList.remove('open');
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!ham.contains(e.target) && !mob.contains(e.target)) {
+      mob.classList.remove('open');
+    }
+  });
+
+  // ── Active nav highlight on scroll ──
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
+  window.addEventListener('scroll', function() {
     let current = '';
-    sections.forEach(s => {
-      if (window.scrol
+    sections.forEach(function(s) {
+      if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+    });
+    navLinks.forEach(function(a) {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+
+  // ── WhatsApp form button ──
+  function sendWhatsApp() {
+    var name    = document.querySelector('input[placeholder="Tu nombre"]').value || '';
+    var phone   = document.querySelector('input[placeholder="+51 000 000 000"]').value || '';
+    var service = document.querySelector('select').value || '';
+    var msg     = document.querySelector('textarea').value || '';
+    var text = 'Hola Jesús, soy *' + name + '* (' + phone + '). Me interesa: *' + service + '*. ' + msg;
+    window.open('https://wa.me/51999999999?text=' + encodeURIComponent(text), '_blank');
+  }
+</script>
+</body>
+</html>
