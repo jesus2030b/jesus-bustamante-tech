@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jesús Bustamante – Especialista en Tecnología y Soporte IT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --blue-deep:   #0a1628;
+      --blue-mid:    #0d2550;
+      --blue-brand:  #1a6fff;
+      --blue-light:  #3d8bff;
+      --blue-glow:   #60a5fa;
+      --accent:      #00d4ff;
+      --white:       #ffffff;
+      --gray-100:    #f4f7fc;
+      --gray-200:    #e2e8f4;
+      --gray-400:    #94a3c0;
+      --gray-600:    #4a5c7a;
+      --card-bg:     #ffffff;
+      --shadow-sm:   0 2px 12px rgba(26,111,255,.08);
+      --shadow-md:   0 8px 32px rgba(26,111,255,.14);
+      --shadow-lg:   0 20px 60px rgba(10,22,40,.18);
+      --radius-sm:   8px;
+      --radius-md:   16px;
+      --radius-lg:   24px;
+      --transition:  .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--blue-deep);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ──────────────── NAV ──────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: rgba(10,22,40,.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: var(--transition);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--blue-brand), var(--accent));
+      border-radius: 10px;
+      display: grid; place-items: center;
+      font-size: 1rem;
+      color: white;
+    }
+
+    .nav-logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: white;
+      line-height: 1.2;
+    }
+
+    .nav-logo-text span {
+      display: block;
+      font-weight: 400;
+      font-size: .7rem;
+      color: var(--blue-glow);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: .25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      padding: .45rem .85rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: white;
+      background: rgba(255,255,255,.1);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--blue-brand), var(--blue-light)) !important;
+      color: white !important;
+      padding: .45rem 1.1rem !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(26,111,255,.4);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: .5rem;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .mobile-menu {
+      display: none;
+      background: var(--blue-deep);
+      padding: 1rem 2rem 1.5rem;
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu a {
+      display: block;
+      padding: .75rem 0;
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    /* ──────────────── HERO ──────────────── */
+    #inicio {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--blue-deep) 0%, var(--blue-mid) 60%, #0c2a6b 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(26,111,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,111,255,.08) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-orb-1 {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,.12) 0%, transparent 70%);
+      top: -200px; right: -100px;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .hero-orb-2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,111,255,.15) 0%, transparent 70%);
+      bottom: -100px; left: 10%;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-30px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: auto;
+      padding: 8rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(0,212,255,.12);
+      border: 1px solid rgba(0,212,255,.3);
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+
+    .hero-badge i { font-size: .7rem; }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, var(--blue-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.7);
+      max-width: 480px;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .hero-name {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-brand), var(--accent));
+      display: grid; place-items: center;
+      font-size: 1.4rem;
+      color: white;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,.2);
+    }
+
+    .hero-name-text strong {
+      display: block;
+      color: white;
+      font-weight: 600;
+      font-size: .95rem;
+    }
+
+    .hero-name-text span {
+      color: rgba(255,255,255,.55);
+      font-size: .82rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .85rem 1.8rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: .9rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue-brand), var(--blue-light));
+      color: white;
+      box-shadow: 0 8px 24px rgba(26,111,255,.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(26,111,255,.5);
+    }
+
+    .btn-wa {
+      background: #25d366;
+      color: white;
+      box-shadow: 0 8px 24px rgba(37,211,102,.3);
+    }
+
+    .btn-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(37,211,102,.5);
+      background: #1db954;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 1.5px solid rgba(255,255,255,.3);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.6);
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: .3rem;
+    }
+
+    .stat-card span {
+      font-size: .78rem;
+      color: rgba(255,255,255,.55);
+      font-weight: 400;
+    }
+
+    .trust-bar {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .trust-bar p {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.4);
+      margin-bottom: .85rem;
+      font-weight: 600;
+    }
+
+    .trust-icons {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .trust-icons span {
+      color: rgba(255,255,255,.6);
+      font-size: .85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .trust-icons span i { color: var(--blue-glow); }
+
+    /* ──────────────── SECTIONS COMMON ──────────────── */
+    section { padding: 90px 2rem; }
+
+    .section-wrap { max-width: 1200px; margin: auto; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue-brand);
+      background: rgba(26,111,255,.08);
+      border: 1px solid rgba(26,111,255,.2);
+      padding: .35rem .9rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--blue-deep);
+      line-height: 1.2;
+      margin-bottom: .75rem;
+    }
+
+    .section-sub {
+      color: var(--gray-600);
+      font-size: 1rem;
+      max-width: 540px;
+      font-weight: 300;
+    }
+
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* ──────────────── SERVICES ──────────────── */
+    #servicios {
+      background: var(--gray-100);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-brand), var(--accent));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(26,111,255,.2);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, rgba(26,111,255,.1), rgba(0,212,255,.1));
+      display: grid; place-items: center;
+      font-size: 1.35rem;
+      color: var(--blue-brand);
+      margin-bottom: 1.25rem;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, var(--blue-brand), var(--accent));
+      color: white;
+    }
+
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0d2550;
+      margin-bottom: .5rem;
+    }
+
+    .service-card p {
+      font-size: .88rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    /* ──────────────── LICENCIAS ──────────────── */
+    #licencias {
+      background: white;
+    }
+
+    .lic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .lic-card {
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 1.5px solid var(--gray-200);
+      transition: var(--transition);
+      background: white;
+    }
+
+    .lic-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--blue-brand);
+    }
+
+    .lic-icon {
+      width: 64px; height: 64px;
+      border-radius: var(--radius-md);
+      display: grid; place-items: center;
+      font-size: 1.7rem;
+      margin: 0 auto 1.25rem;
+    }
+
+    .lic-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+      color: var(--blue-deep);
+    }
+
+    .lic-card p {
+      font-size: .83rem;
+      color: var(--gray-600);
+      line-height: 1.55;
+    }
+
+    .lic-badge {
+      display: inline-block;
+      margin-top: .85rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .3rem .8rem;
+      border-radius: 50px;
+    }
+
+    /* ──────────────── INFRA ──────────────── */
+    #infraestructura {
+      background: var(--blue-deep);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #infraestructura::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(26,111,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,111,255,.06) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    #infraestructura .section-title { color: white; }
+    #infraestructura .section-sub  { color: rgba(255,255,255,.6); }
+    #infraestructura .section-tag  { color: var(--accent); background: rgba(0,212,255,.1); border-color: rgba(0,212,255,.25); }
+
+    .infra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .infra-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      backdrop-filter: blur(8px);
+      transition: var(--transition);
+    }
+
+    .infra-card:hover {
+      background: rgba(255,255,255,.09);
+      transform: translateY(-4px);
+      border-color: rgba(0,212,255,.3);
+    }
+
+    .infra-icon {
+      width: 54px; height: 54px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, rgba(26,111,255,.3), rgba(0,212,255,.2));
+      border: 1px solid rgba(0,212,255,.25);
+      display: grid; place-items: center;
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .infra-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: .5rem;
+    }
+
+    .infra-card p {
+      font-size: .87rem;
+      color: rgba(255,255,255,.6);
+      line-height: 1.6;
+    }
+
+    .infra-card ul {
+      list-style: none;
+      margin-top: .85rem;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+
+    .infra-card ul li {
+      font-size: .82rem;
+      color: rgba(255,255,255,.55);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .infra-card ul li i {
+      color: var(--accent);
+      font-size: .65rem;
+    }
+
+    /* ──────────────── SOPORTE ──────────────── */
+    #soporte { background: var(--gray-100); }
+
+    .support-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .support-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .support-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      transition: var(--transition);
+    }
+
+    .support-item:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: rgba(26,111,255,.2);
+      transform: translateX(4px);
+    }
+
+    .support-item-icon {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, rgba(26,111,255,.1), rgba(0,212,255,.08));
+      display: grid; place-items: center;
+      font-size: 1rem;
+      color: var(--blue-brand);
+      flex-shrink: 0;
+    }
+
+    .support-item-text h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+      margin-bottom: .2rem;
+    }
+
+    .support-item-text p {
+      font-size: .82rem;
+      color: var(--gray-600);
+    }
+
+    /* EMAIL DOMAIN HIGHLIGHT BOX */
+    .email-highlight {
+      background: linear-gradient(135deg, var(--blue-deep), var(--blue-mid));
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      color: white;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .email-highlight h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+      color: white;
+    }
+
+    .email-highlight p {
+      font-size: .88rem;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 1.5rem;
+      line-height: 1.65;
+    }
+
+    .email-demo {
+      background: rgba(0,0,0,.3);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      font-family: 'Courier New', monospace;
+      font-size: .88rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .email-demo .before {
+      color: rgba(255,255,255,.4);
+      text-decoration: line-through;
+      display: block;
+      margin-bottom: .4rem;
+    }
+
+    .email-demo .after {
+      color: var(--accent);
+      font-weight: 700;
+      display: block;
+    }
+
+    .email-features {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+    }
+
+    .email-features li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .84rem;
+      color: rgba(255,255,255,.7);
+    }
+
+    .email-features li i { color: var(--accent); font-size: .75rem; }
+
+    /* ──────────────── CONTACT ──────────────── */
+    #contacto { background: white; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--blue-deep);
+      transition: var(--transition);
+    }
+
+    .contact-card:hover {
+      border-color: var(--blue-brand);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+
+    .contact-card-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      display: grid; place-items: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card strong {
+      display: block;
+      font-weight: 600;
+      font-size: .9rem;
+      margin-bottom: .15rem;
+    }
+
+    .contact-card span {
+      font-size: .82rem;
+      color: var(--gray-600);
+    }
+
+    /* FORM */
+    .contact-form {
+      background: var(--gray-100);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      border: 1px solid var(--gray-200);
+    }
+
+    .contact-form h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--blue-deep);
+      margin-bottom: .4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: .8rem 1rem;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      color: var(--blue-deep);
+      background: white;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue-brand);
+      box-shadow: 0 0 0 3px rgba(26,111,255,.1);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .btn-form {
+      width: 100%;
+      padding: .95rem;
+      background: linear-gradient(135deg, var(--blue-brand), var(--blue-light));
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+    }
+
+    .btn-form:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(26,111,255,.35);
+    }
+
+    /* FLOATING WA */
+    .wa-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 998;
+      width: 60px; height: 60px;
+      background: #25d366;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,.45);
+      text-decoration: none;
+      color: white;
+      font-size: 1.6rem;
+      transition: var(--transition);
+      animation: pulse-wa 2.5s ease-in-out infinite;
+    }
+
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 32px rgba(37,211,102,.6);
+      animation: none;
+    }
+
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,.45); }
+      50%       { box-shadow: 0 6px 32px rgba(37,211,102,.7), 0 0 0 10px rgba(37,211,102,.1); }
+    }
+
+    .wa-tooltip {
+      position: absolute;
+      right: 72px;
+      white-space: nowrap;
+      background: var(--blue-deep);
+      color: white;
+      font-size: .78rem;
+      font-weight: 600;
+      padding: .45rem .9rem;
+      border-radius: var(--radius-sm);
+      pointer-events: none;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .wa-float:hover .wa-tooltip { opacity: 1; }
+
+    /* ──────────────── FOOTER ──────────────── */
+    footer {
+      background: var(--blue-deep);
+      color: white;
+      padding: 3.5rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand p {
+      font-size: .87rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.65;
+      margin-top: .75rem;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .footer-col ul li a {
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: color .2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--blue-glow); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: .8rem;
+      color: rgba(255,255,255,.35);
+    }
+
+    .footer-bottom span {
+      color: var(--blue-light);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: .6rem;
+    }
+
+    .footer-social-btn {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      display: grid; place-items: center;
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: var(--transition);
+    }
+
+    .footer-social-btn:hover {
+      background: var(--blue-brand);
+      color: white;
+      border-color: transparent;
+    }
+
+    /* ──────────────── RESPONSIVE ──────────────── */
+    @media (max-width: 900px) {
+      .hero-content    { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-right      { display: none; }
+      .support-layout  { grid-template-columns: 1fr; }
+      .contact-grid    { grid-template-columns: 1fr; }
+      .footer-top      { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row        { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      nav .nav-links { display: none; }
+      .hamburger     { display: flex; }
+      section        { padding: 60px 1.25rem; }
+      .hero-content  { padding: 6rem 1.25rem 3rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .lic-grid      { grid-template-columns: 1fr 1fr; }
+      .infra-grid    { grid-template-columns: 1fr; }
+      .contact-form  { padding: 1.5rem; }
+    }
+
+    @media (max-width: 420px) {
+      .lic-grid { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; }
+      .btn { justify-content: center; }
+    }
+
+    /* Animations on load */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge    { animation: fadeUp .5s ease both; }
+    .hero-title    { animation: fadeUp .6s .1s ease both; }
+    .hero-subtitle { animation: fadeUp .6s .2s ease both; }
+    .hero-name     { animation: fadeUp .6s .3s ease both; }
+    .hero-buttons  { animation: fadeUp .6s .4s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- ───── NAV ───── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#inicio">
+      <div class="nav-logo-icon"><i class="fas fa-microchip"></i></div>
+      <div class="nav-logo-text">
+        JB Tech<span>Soporte &amp; Soluciones IT</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#licencias">Licencias</a></li>
+      <li><a href="#infraestructura">Infraestructura</a></li>
+      <li><a href="#soporte">Soporte</a></li>
+      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio"        onclick="closeMenu()">Inicio</a>
+    <a href="#servicios"     onclick="closeMenu()">Servicios</a>
+    <a href="#licencias"     onclick="closeMenu()">Licencias</a>
+    <a href="#infraestructura" onclick="closeMenu()">Infraestructura</a>
+    <a href="#soporte"       onclick="closeMenu()">Soporte</a>
+    <a href="#contacto"      onclick="closeMenu()">Contacto</a>
+  </div>
+</nav>
+
+<!-- ───── HERO ───── -->
+<section id="inicio">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge"><i class="fas fa-circle-check"></i> Especialista Certificado</div>
+      <h1 class="hero-title">
+        Soluciones tecnológicas<br>
+        <span class="highlight">confiables para tu<br>empresa y hogar</span>
+      </h1>
+      <p class="hero-subtitle">
+        Tecnología a tu medida: desde licencias de software hasta infraestructura completa,
+        con atención personalizada y respuesta rápida.
+      </p>
+      <div class="hero-name">
+        <div class="hero-avatar">JB</div>
+        <div class="hero-name-text">
+          <strong>Jesús Bustamante</strong>
+          <span>Especialista en Tecnología y Soporte IT</span>
+        </div>
+      </div>
+      <div class="hero-buttons">
+        <a href="#servicios" class="btn btn-primary"><i class="fas fa-layer-group"></i> Ver Servicios</a>
+        <a href="https://wa.me/51999999999?text=Hola%20Jes%C3%BAs,%20necesito%20soporte%20IT" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#contacto" class="btn btn-outline"><i class="fas fa-envelope"></i> Contacto</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stats">
+        <div class="stat-card"><strong>+200</strong><span>Clientes atendidos</span></div>
+        <div class="stat-card"><strong>5+</strong><span>Años de experiencia</span></div>
+        <div class="stat-card"><strong>24h</strong><span>Tiempo de respuesta</span></div>
+      </div>
+      <div class="trust-bar">
+        <p>Tecnología con la que trabajo</p>
+        <div class="trust-icons">
+          <span><i class="fab fa-microsoft"></i> Microsoft</span>
+          <span><i class="fab fa-google"></i> Google Workspace</span>
+          <span><i class="fas fa-cloud"></i> Cloud Solutions</span>
+          <span><i class="fas fa-shield-halved"></i> Antivirus</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── SERVICIOS ───── -->
+<section id="servicios">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">Servicios</div>
+      <h2 class="section-title">Todo lo que necesita tu empresa o negocio</h2>
+      <p class="section-sub">Soluciones integrales de tecnología para pequeñas empresas, emprendedores y usuarios individuales.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fab fa-microsoft"></i></div>
+        <h3>Licencias de Microsoft Office</h3>
+        <p>Word, Excel, PowerPoint y más. Licencias originales para tu equipo con activación garantizada y soporte post-venta.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-shield-virus"></i></div>
+        <h3>Antivirus &amp; Seguridad</h3>
+        <p>Protección avanzada contra malware, ransomware y amenazas digitales. Instalación y configuración incluida.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-server"></i></div>
+        <h3>Configuración de Servidores</h3>
+        <p>Instalación y configuración de servidores para empresas: Windows Server, almacenamiento, usuarios y permisos.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-wifi"></i></div>
+        <h3>Redes WiFi</h3>
+        <p>Diseño e instalación de redes inalámbricas seguras. Cobertura optimizada para oficinas, locales y hogares.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-camera-security"></i></div>
+        <h3>Cámaras de Seguridad</h3>
+        <p>Instalación de sistemas CCTV e IP. Monitoreo remoto desde tu celular, visión nocturna y grabación en la nube.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-laptop-medical"></i></div>
+        <h3>Soporte Técnico PC</h3>
+        <p>Diagnóstico y reparación de computadoras, formateos, actualizaciones y optimización de rendimiento.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+        <h3>Almacenamiento en la Nube</h3>
+        <p>Configuración de Google Drive y OneDrive: sincronización, copias de seguridad automáticas y acceso desde cualquier dispositivo.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-at"></i></div>
+        <h3>Correos con Dominio Propio</h3>
+        <p>Configura correos tipo <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3dddcded1c1d6f3c7c6d6dec3c1d6c0d29dd0dcde">[email&#160;protected]</a></strong> usando Google Workspace o Microsoft 365. Dale imagen profesional a tu negocio.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-globe"></i></div>
+        <h3>Diseño de Páginas Web</h3>
+        <p>Sitios web modernos, rápidos y responsive para empresas y emprendedores. SEO básico incluido.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Catálogos Digitales</h3>
+        <p>Catálogos interactivos de productos o servicios en formato digital: fáciles de compartir por WhatsApp, redes sociales o correo.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── LICENCIAS ───── -->
+<section id="licencias">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">Software Original</div>
+      <h2 class="section-title">Licencias de Software</h2>
+      <p class="section-sub">Software original con garantía, activación inmediata y soporte técnico incluido.</p>
+    </div>
+    <div class="lic-grid">
+
+      <div class="lic-card">
+        <div class="lic-icon" style="background:linear-gradient(135deg,#e8f0fe,#d2e3fc)">
+          <i class="fab fa-microsoft" style="color:#0078d4;font-size:1.8rem"></i>
+        </div>
+        <h3>Microsoft 365</h3>
+        <p>Word, Excel, PowerPoint, Outlook y Teams. Incluye 1TB de OneDrive en la nube.</p>
+        <span class="lic-badge" style="background:#e8f0fe;color:#0078d4">Para empresas y hogar</span>
+      </div>
+
+      <div class="lic-card">
+        <div class="lic-icon" style="background:linear-gradient(135deg,#fce8e8,#fdd)">
+          <i class="fas fa-shield-halved" style="color:#e53935;font-size:1.8rem"></i>
+        </div>
+        <h3>Antivirus Premium</h3>
+        <p>Norton, Kaspersky, Bitdefender y más. Protección total para tu PC, Mac y móviles.</p>
+        <span class="lic-badge" style="background:#fce8e8;color:#e53935">Protección total</span>
+      </div>
+
+      <div class="lic-card">
+        <div class="lic-icon" style="background:linear-gradient(135deg,#e6f9f0,#d0f0e0)">
+          <i class="fab fa-google" style="color:#34a853;font-size:1.8rem"></i>
+        </div>
+        <h3>Google Workspace</h3>
+        <p>Gmail empresarial, Google Meet, Drive y Docs con tu propio dominio. Desde 1 usuario.</p>
+        <span class="lic-badge" style="background:#e6f9f0;color:#34a853">Correo profesional</span>
+      </div>
+
+      <div class="lic-card">
+        <div class="lic-icon" style="background:linear-gradient(135deg,#fffde7,#fff9c4)">
+          <i class="fas fa-windows" style="color:#ff9800;font-size:1.8rem"></i>
+        </div>
+        <h3>Windows 11 Pro</h3>
+        <p>Sistema operativo original con clave de activación. Instalación y configuración incluida.</p>
+        <span class="lic-badge" style="background:#fffde7;color:#ff9800">Licencia original</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── INFRAESTRUCTURA ───── -->
+<section id="infraestructura">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">Infraestructura IT</div>
+      <h2 class="section-title">Tu empresa conectada y segura</h2>
+      <p class="section-sub">Diseño, instalación y mantenimiento de la infraestructura tecnológica que necesita tu negocio.</p>
+    </div>
+    <div class="infra-grid">
+
+      <div class="infra-card">
+        <div class="infra-icon"><i class="fas fa-server"></i></div>
+        <h3>Servidores</h3>
+        <p>Instalación y administración de servidores físicos y virtuales para centralizar tu información empresarial.</p>
+        <ul>
+          <li><i class="fas fa-chevron-right"></i> Windows Server 2019/2022</li>
+          <li><i class="fas fa-chevron-right"></i> Active Directory &amp; usuarios</li>
+          <li><i class="fas fa-chevron-right"></i> Servidor de archivos compartidos</li>
+          <li><i class="fas fa-chevron-right"></i> Backup automatizado</li>
+        </ul>
+      </div>
+
+      <div class="infra-card">
+        <div class="infra-icon"><i class="fas fa-network-wired"></i></div>
+        <h3>Redes WiFi &amp; LAN</h3>
+        <p>Diseño de redes seguras y eficientes para oficinas, locales comerciales y residencias.</p>
+        <ul>
+          <li><i class="fas fa-chevron-right"></i> Cobertura total del local</li>
+          <li><i class="fas fa-chevron-right"></i> Segmentación de red por área</li>
+          <li><i class="fas fa-chevron-right"></i> WiFi para clientes y empleados</li>
+          <li><i class="fas fa-chevron-right"></i> Control de acceso y velocidad</li>
+        </ul>
+      </div>
+
+      <div class="infra-card">
+        <div class="infra-icon"><i class="fas fa-video"></i></div>
+        <h3>Cámaras de Seguridad</h3>
+        <p>Sistemas de videovigilancia profesional para proteger tu negocio, hogar o local las 24 horas.</p>
+        <ul>
+          <li><i class="fas fa-chevron-right"></i> Cámaras IP HD y 4K</li>
+          <li><i class="fas fa-chevron-right"></i> Visión nocturna infrarroja</li>
+          <li><i class="fas fa-chevron-right"></i> Monitoreo desde el celular</li>
+          <li><i class="fas fa-chevron-right"></i> Grabación continua o por movimiento</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── SOPORTE ───── -->
+<section id="soporte">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">Soporte &amp; Soluciones Digitales</div>
+      <h2 class="section-title">Siempre disponible cuando lo necesitas</h2>
+      <p class="section-sub">Asistencia técnica rápida y soluciones digitales que hacen crecer tu negocio.</p>
+    </div>
+    <div class="support-layout">
+      <div class="support-list">
+
+        <div class="support-item">
+          <div class="support-item-icon"><i class="fas fa-laptop-code"></i></div>
+          <div class="support-item-text">
+            <h4>Soporte técnico de computadoras</h4>
+            <p>Diagnóstico, formateo, eliminación de virus, instalación de programas y optimización de rendimiento.</p>
+          </div>
+        </div>
+
+        <div class="support-item">
+          <div class="support-item-icon"><i class="fab fa-google-drive"></i></div>
+          <div class="support-item-text">
+            <h4>Google Drive para tu empresa</h4>
+            <p>Configuración de almacenamiento colaborativo: comparte archivos con tu equipo de forma segura desde cualquier lugar.</p>
+          </div>
+        </div>
+
+        <div class="support-item">
+          <div class="support-item-icon"><i class="fas fa-cloud"></i></div>
+          <div class="support-item-text">
+            <h4>Microsoft OneDrive</h4>
+            <p>Sincronización automática de documentos con OneDrive. Accede a tus archivos desde PC, tablet o celular.</p>
+          </div>
+        </div>
+
+        <div class="support-item">
+          <div class="support-item-icon"><i class="fas fa-globe"></i></div>
+          <div class="support-item-text">
+            <h4>Diseño de páginas web</h4>
+            <p>Sitios web modernos, responsivos y optimizados para SEO. Tu presencia digital al siguiente nivel.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Email highlight -->
+      <div class="email-highlight">
+        <h3><i class="fas fa-envelope-open-text" style="margin-right:.5rem;color:var(--accent)"></i> Correo profesional con tu dominio</h3>
+        <p>
+          ¿Sabías que usar un correo con tu propio dominio genera más confianza en tus clientes?
+          Configuro Google Workspace o Microsoft 365 para que tu empresa tenga correos personalizados
+          como <strong style="color:var(--accent)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c3a2922382d3f0c383929213c3e293f2d622f2321">[email&#160;protected]</a></strong> en lugar del clásico Gmail gratuito.
+        </p>
+        <div class="email-demo">
+          <span class="before"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1365767d6772603d767e636176607253747e727a7f3d707c7e">[email&#160;protected]</a></span>
+          <span class="after"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="06706368726775467273636b76746375672865696b">[email&#160;protected]</a> ✓</span>
+        </div>
+        <ul class="email-features">
+          <li><i class="fas fa-circle-check"></i> Correos ilimitados con tu dominio</li>
+          <li><i class="fas fa-circle-check"></i> Acceso desde Gmail, Outlook o móvil</li>
+          <li><i class="fas fa-circle-check"></i> Drive, Meet y Calendar incluidos</li>
+          <li><i class="fas fa-circle-check"></i> Antispam y seguridad avanzada</li>
+          <li><i class="fas fa-circle-check"></i> Imagen profesional para tu negocio</li>
+          <li><i class="fas fa-circle-check"></i> Soporte y configuración completa</li>
+        </ul>
+        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20configurar%20correo%20empresarial" target="_blank" class="btn btn-wa" style="margin-top:1.5rem;display:inline-flex">
+          <i class="fab fa-whatsapp"></i> Consultar ahora
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── CONTACTO ───── -->
+<section id="contacto">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">Contacto</div>
+      <h2 class="section-title">¿Listo para mejorar tu tecnología?</h2>
+      <p class="section-sub">Escríbeme y con gusto te asesoraré sin compromiso.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+
+        <a href="https://wa.me/51999999999" target="_blank" class="contact-card">
+          <div class="contact-card-icon" style="background:#e6faf0;color:#25d366">
+            <i class="fab fa-whatsapp" style="font-size:1.4rem"></i>
+          </div>
+          <div>
+            <strong>WhatsApp</strong>
+            <span>+51 999 999 999 · Respuesta rápida</span>
+          </div>
+        </a>
+
+        <a href="/cdn-cgi/l/email-protection#0f656a7c7a7c4f7b7a6a627f7d6a7c6e216c6062" class="contact-card">
+          <div class="contact-card-icon" style="background:#e8f0fe;color:#1a6fff">
+            <i class="fas fa-envelope" style="font-size:1.2rem"></i>
+          </div>
+          <div>
+            <strong>Correo electrónico</strong>
+            <span><span class="__cf_email__" data-cfemail="e38986909690a39796868e9391869082cd808c8e">[email&#160;protected]</span></span>
+          </div>
+        </a>
+
+        <div class="contact-card" style="cursor:default">
+          <div class="contact-card-icon" style="background:#fef3e2;color:#f59e0b">
+            <i class="fas fa-location-dot" style="font-size:1.2rem"></i>
+          </div>
+          <div>
+            <strong>Ubicación</strong>
+            <span>Lima, Perú · Atención a domicilio y remota</span>
+          </div>
+        </div>
+
+        <div class="contact-card" style="cursor:default">
+          <div class="contact-card-icon" style="background:#f0f4ff;color:#6366f1">
+            <i class="fas fa-clock" style="font-size:1.2rem"></i>
+          </div>
+          <div>
+            <strong>Horario de atención</strong>
+            <span>Lun – Sáb: 8:00 am – 7:00 pm</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="contact-form">
+        <h3>Envíame un mensaje</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+51 000 000 000" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tu@correo.com" />
+        </div>
+        <div class="form-group">
+          <label>Servicio de interés</label>
+          <select>
+            <option value="">Selecciona un servicio...</option>
+            <option>Licencias Microsoft Office</option>
+            <option>Antivirus</option>
+            <option>Configuración de servidores</option>
+            <option>Redes WiFi</option>
+            <option>Cámaras de seguridad</option>
+            <option>Soporte técnico</option>
+            <option>Almacenamiento en la nube</option>
+            <option>Correo empresarial con dominio</option>
+            <option>Diseño de página web</option>
+            <option>Catálogos digitales</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea placeholder="Cuéntame en qué puedo ayudarte..."></textarea>
+        </div>
+        <button class="btn-form" onclick="sendWhatsApp()">
+          <i class="fas fa-paper-plane"></i> Enviar mensaje
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FOOTER ───── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#inicio" style="display:inline-flex;margin-bottom:.5rem">
+          <div class="nav-logo-icon"><i class="fas fa-microchip"></i></div>
+          <div class="nav-logo-text" style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:white;line-height:1.2">
+            JB Tech<span style="display:block;font-weight:400;font-size:.7rem;color:var(--blue-glow);letter-spacing:.08em;text-transform:uppercase">Soporte &amp; Soluciones IT</span>
+          </div>
+        </a>
+        <p>Soluciones tecnológicas confiables para tu empresa y hogar. Profesional con experiencia en hardware, software, redes y seguridad.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#licencias">Licencias de software</a></li>
+          <li><a href="#infraestructura">Servidores</a></li>
+          <li><a href="#infraestructura">Redes WiFi</a></li>
+          <li><a href="#infraestructura">Cámaras CCTV</a></li>
+          <li><a href="#soporte">Soporte técnico</a></li>
+          <li><a href="#soporte">Páginas web</a></li>
+          <li><a href="#soporte">Catálogos digitales</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/51999999999" target="_blank"><i class="fab fa-whatsapp" style="margin-right:.35rem"></i> WhatsApp</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#88e2edfbfdfbc8fcfdede5f8faedfbe9a6ebe7e5"><i class="fas fa-envelope" style="margin-right:.35rem"></i> Correo</a></li>
+          <li><a href="#contacto"><i class="fas fa-paper-plane" style="margin-right:.35rem"></i> Formulario</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span>Jesús Bustamante</span> – Especialista en Tecnología &amp; Soporte IT · Lima, Perú</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="footer-social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/51999999999" target="_blank" class="footer-social-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="footer-social-btn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ───── FLOATING WA ───── -->
+<a href="https://wa.me/51999999999?text=Hola%20Jes%C3%BAs,%20necesito%20ayuda%20con%20soporte%20IT" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="wa-tooltip">¡Escríbeme ahora!</span>
+</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Hamburger menu
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobileMenu');
+  ham.addEventListener('click', () => mob.classList.toggle('open'));
+  function closeMenu() { mob.classList.remove('open'); }
+
+  // Smooth active nav
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrol
